@@ -42,14 +42,14 @@ def takeCommand():
             print(f"user said:{statement}\n")
 
         except Exception as e:
-            speak("Bitte Wiederholen sie sich")
+            speak("")
             return "None"
         return statement
 
 while True:
     while True:
         statement = takeCommand().lower()
-        if 'hey pai' in statement:
+        if 'hey 05' in statement:
             break
 
     if __name__=='__main__':
@@ -85,7 +85,7 @@ while True:
                 speak("gmail ist jetzt offen")
                 time.sleep(2)
 
-            elif 'zeit' in statement or 'spät' in statement or 'uhr' in statement or 'uhrzeit':
+            elif 'zeit' in statement or 'spät' in statement:
                 strTime=datetime.datetime.now().strftime("%H:%M:%S")
                 speak(f"Es ist {strTime}")
                 print(f"Es ist {strTime}")
@@ -119,7 +119,7 @@ while True:
                         str(weather_description))
                 time.sleep(2)
 
-            if "off" in statement or "ausschalten" in statement or "stop" in statement or "stopp" in statement or "nichts" in statement:
+            if "off" in statement or "ausschalten" in statement or "stop" in statement or "stopp" in statement or "nichts" in statement or "nicht" in statement:
                 speak('Wird ausgeschaltet...')
                 print('Wird ausgeschaltet...')
                 break
