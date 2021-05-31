@@ -42,79 +42,84 @@ def takeCommand():
             print(f"user said:{statement}\n")
 
         except Exception as e:
-            speak("Bitte wiederholen sie sich")
+            speak("Bitte Wiederholen sie sich")
             return "None"
         return statement
 
-print("Wird geladen...")
-speak("Wird geladen...")
-wishMe()
-
-if __name__=='__main__':
-
-
+while True:
     while True:
-        speak("Wie kann ich dir helfen?")
         statement = takeCommand().lower()
-        if statement==0:
-            continue
-        
-        if 'wikipedia' in statement:
-            speak('Searching Wikipedia...')
-            statement =statement.replace("wikipedia", "")
-            results = wikipedia.summary(statement, sentences=3)
-            speak("According to Wikipedia")
-            print(results)
-            speak(results)
-
-        
-        elif 'öffne youtube' in statement:
-            webbrowser.open_new_tab("https://www.youtube.com")
-            speak("youtube ist jetzt offen")
-            time.sleep(5)
-
-        elif 'öffne google' in statement:
-            webbrowser.open_new_tab("https://www.google.com")
-            speak("Google ist jetzt offen")
-            time.sleep(5)
-
-        elif 'öffne gmail' in statement:
-            webbrowser.open_new_tab("https://www.gmail.com")
-            speak("gmail ist jetzt offen")
-            time.sleep(5)
-
-        elif 'Zeit' in statement:
-            strTime=datetime.datetime.now().strftime("%H:%M:%S")
-            speak(f"Es ist {strTime}")
-            
-        elif 'Wetter' in statement:
-            api_key="Apply your unique ID"
-            base_url="https://api.openweathermap.org/data/2.5/weather?"
-            speak("In welcher Stadt?")
-            city_name=takeCommand()
-            complete_url=base_url+"appid="+api_key+"&q="+city_name
-            response = requests.get(complete_url)
-            x=response.json()
-            if x["cod"]!="404":
-                y=x["main"]
-                current_temperature = y["temp"]
-                current_humidiy = y["humidity"]
-                z = x["weather"]
-                weather_description = z[0]["description"]
-                speak(" Temperature in kelvin unit is " +
-                      str(current_temperature) +
-                      "\n humidity in percentage is " +
-                      str(current_humidiy) +
-                      "\n description  " +
-                      str(weather_description))
-                print(" Temperature in kelvin unit = " +
-                      str(current_temperature) +
-                      "\n humidity (in percentage) = " +
-                      str(current_humidiy) +
-                      "\n description = " +
-                      str(weather_description))
-   
-        if "off" in statement or "ausschalten" in statement or "stop" in statement or "stopp" in statement or "nichts" in statement:
-            speak('Wird ausgeschaltet...')
-            print('Wird ausgeschaltet...')
+        if 'hey pai' in statement:
             break
+
+    if __name__=='__main__':
+
+
+        while True:
+            speak("Wie kann ich dir helfen?")
+            statement = takeCommand().lower()
+            if statement==0:
+                continue
+
+            elif 'wikipedia' in statement:
+                speak('Searching Wikipedia...')
+                statement =statement.replace("wikipedia", "")
+                results = wikipedia.summary(statement, sentences=3)
+                speak("According to Wikipedia")
+                print(results)
+                speak(results)
+
+
+            elif 'öffne youtube' in statement:
+                webbrowser.open_new_tab("https://www.youtube.com")
+                speak("youtube ist jetzt offen")
+                time.sleep(2)
+
+            elif 'öffne google' in statement:
+                webbrowser.open_new_tab("https://www.google.com")
+                speak("Google ist jetzt offen")
+                time.sleep(2)
+
+            elif 'öffne gmail' in statement:
+                webbrowser.open_new_tab("https://www.gmail.com")
+                speak("gmail ist jetzt offen")
+                time.sleep(2)
+
+            elif 'zeit' in statement:
+                strTime=datetime.datetime.now().strftime("%H:%M:%S")
+                speak(f"Es ist {strTime}")
+                print(f"Es ist {strTime}")
+                time.sleep(2)
+
+            elif 'wetter' in statement:
+                api_key="6fe978f2e9ea1220f05602b05d64984b"
+                base_url="https://api.openweathermap.org/data/2.5/weather?"
+                speak("In welcher Stadt?")
+                city_name=takeCommand()
+                complete_url=base_url+"appid="+api_key+"&q="+city_name
+                response = requests.get(complete_url)
+                x=response.json()
+                if x["cod"]!="404":
+                    y=x["main"]
+                    current_temperature = y["temp"]
+                    current_humidiy = y["humidity"]
+                    z = x["weather"]
+                    weather_description = z[0]["description"]
+                    speak(" Temperature in kelvin unit is " +
+                        str(current_temperature) +
+                        "\n humidity in percentage is " +
+                        str(current_humidiy) +
+                        "\n description  " +
+                        str(weather_description))
+                    print(" Temperature in kelvin unit = " +
+                        str(current_temperature) +
+                        "\n humidity (in percentage) = " +
+                        str(current_humidiy) +
+                        "\n description = " +
+                        str(weather_description))
+                time.sleep(2)
+
+            if "off" in statement or "ausschalten" in statement or "stop" in statement or "stopp" in statement or "nichts" in statement:
+                speak('Wird ausgeschaltet...')
+                print('Wird ausgeschaltet...')
+                break
