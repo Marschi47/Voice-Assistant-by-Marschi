@@ -85,7 +85,7 @@ while True:
                 speak("gmail ist jetzt offen")
                 time.sleep(2)
 
-            elif 'zeit' in statement:
+            elif 'zeit' in statement or 'spät' in statement or 'uhr' in statement or 'uhrzeit':
                 strTime=datetime.datetime.now().strftime("%H:%M:%S")
                 speak(f"Es ist {strTime}")
                 print(f"Es ist {strTime}")
