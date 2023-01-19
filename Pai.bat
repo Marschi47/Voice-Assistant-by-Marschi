@@ -1,1 +1,0 @@
-python p:/Anderes/voice-assistant/Voice-assistant-by-Marschi/main.py
